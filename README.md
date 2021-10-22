@@ -11,7 +11,7 @@ Run 'node index.js' to start.
 
 Please refer to the video to see functionality:
 
-[C:\Users\tasha\ortizbootcamp-HMWK\WK12EMPLOYEETRACKER\WK12.mp4]
+![Function Video](wk12.gif)
 
 
 
