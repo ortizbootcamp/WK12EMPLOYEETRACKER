@@ -1,6 +1,6 @@
 require('dotenv').config();
 const inquirer = require("inquirer");
-const mysql = require("mysql");
+const mysql = require("mysql2");
 const cTable = require("console.table");
 
 //connect to db
@@ -9,6 +9,7 @@ const connection = mysql.createConnection({
     host: "localhost",
     port: 3306,
     user: "root",
+    password: process.env.MYSQL_PW,
     database: "employeetracker_db"
 });
 
@@ -60,40 +61,42 @@ function beginPrompt() {
                 break;
             }
     })
+
 }
 
 //functions
 function addEmployee() {
     inquirer.prompt([
         {
-            name: "firstname",
+            name: "firstName",
             type: "input",
             message: "Input employee's first name:"
         },
         {
-            name: "lastname",
+            name: "lastName",
             type: "input",
             message: "Input employee's last name:"
         },
         {
             name: "role",
-            type: "list",
+            type: "input",
             message: "Input employee's role:",
             choices: roleInput()
           },
           {
             name: "minput",
-            type: "list",
+            type: "input",
             message: "Input employee manager's name:",
             choices: managerInput()
-        } .then(function (addEmAction) {
+        }
+            ]) .then(function (addEmAction) {
             var roleId = roleInput().indexOf(addEmAction.role) + 1
             var managerId = managerInput().indexOf(addEmAction.minput) + 1
 
             connection.query("INSERT INTO employee SET ?", {
 
-                firstName: addEmAction.firstName,
-                lastName: addEmAction.lastName,
+                first_name: addEmAction.firstName,
+                last_name: addEmAction.lastName,
                 manager_id: managerId,
                 role_id: roleId
             }, function (err) {
@@ -102,11 +105,10 @@ function addEmployee() {
                 beginPrompt();
             })
         })
-    ])
 }
 
 function addRole() {
-    connection.query("SELECT role.rolename AS RoleName, role.salary AS Salary FROM role", function(err, res) {
+    connection.query("SELECT role.roleName AS RoleName, role.salary AS Salary FROM role", function(err, res) {
         inquirer.prompt([
             {
                 name: "RoleName",
@@ -187,7 +189,7 @@ function roleInput() {
     connection.query("SELECT * FROM role", function(err,res) {
         if (err) throw err
         for (var i = 0; i < res.length; i++) {
-            roles.push(res[i].RoleName);
+            roles.push(res[i].roleName);
         }
     })
     return roles;
@@ -246,3 +248,5 @@ function updateEmployee() {
         });
     });
 }
+
+beginPrompt();

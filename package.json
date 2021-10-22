@@ -1,24 +1,8 @@
 {
   "name": "wk12employeetracker",
   "version": "1.0.0",
-  "description": "employee tracker",
+  "description": "business organizer",
   "main": "index.js",
-  "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
-  },
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/ortizbootcamp/WK12EMPLOYEETRACKER.git"
-  },
-  "keywords": [
-    "tracker"
-  ],
-  "author": "Natasha Ortiz",
-  "license": "ISC",
-  "bugs": {
-    "url": "https://github.com/ortizbootcamp/WK12EMPLOYEETRACKER/issues"
-  },
-  "homepage": "https://github.com/ortizbootcamp/WK12EMPLOYEETRACKER#readme",
   "dependencies": {
     "console.table": "^0.10.0",
     "dotenv": "^10.0.0",
@@ -27,5 +11,19 @@
     "mysql": "^2.18.1",
     "mysql2": "^2.3.2",
     "node": "^16.11.1"
-  }
+  },
+  "devDependencies": {},
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/ortizbootcamp/WK12EMPLOYEETRACKER.git"
+  },
+  "author": "Natasha O",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/ortizbootcamp/WK12EMPLOYEETRACKER/issues"
+  },
+  "homepage": "https://github.com/ortizbootcamp/WK12EMPLOYEETRACKER#readme"
 }
